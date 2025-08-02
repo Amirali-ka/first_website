@@ -7,5 +7,9 @@
 </head>
 <body>
     <h1>this is test</h1>
+    {{posts}}
+    <p>{% for i in posts %}</p>
+    {{i.title}}
+    {% endfor %}
 </body>
 </html>
