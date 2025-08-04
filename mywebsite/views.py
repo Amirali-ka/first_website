@@ -1,14 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from blog.models import post
 # Create your views here.
-from django.http import HttpResponse,JsonResponse
 def index_view(request):
     return render(request,'website/index.html')
 def about_view(request):
     return render(request,'website/about.html')
 def contact_view(request):
     return render(request,'website/contact.html')
-def test_view(request):
-    posts=post.objects.all()
+def test_view(request,pid):
+    posts=get_object_or_404(post,pk=pid)
     contex={'posts':posts}
     return render(request,'website/test.html',contex)
