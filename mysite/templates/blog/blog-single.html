@@ -8,9 +8,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								{{posts.title}}				
+								{{postt.title}}				
 							</h1>	
-							<p class="text-white link-nav"><a href="{% url 'website:index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span><a href="{% url 'blog:index' %}">Blog </a> <span class="lnr lnr-arrow-right"></span> <a href="blog-single.html"> {{posts.title}}</a></p>
+							<p class="text-white link-nav"><a href="{% url 'website:index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span><a href="{% url 'blog:index' %}">Blog </a> <span class="lnr lnr-arrow-right"></span> <a href="blog-single.html"> {{postt.title}}</a></p>
 						</div>	
 					</div>
 				</div>
@@ -25,7 +25,7 @@
 							<div class="single-post row">
 								<div class="col-lg-12">
 									<div class="feature-img">
-										<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
+										<img class="img-fluid" src="{{postt.image.url}}" alt="">
 									</div>									
 								</div>
 								<div class="col-lg-3  col-md-3 meta-details">
@@ -36,9 +36,9 @@
 										<li><a href="#">Lifestyle</a></li>
 									</ul>
 									<div class="user-details row">
-										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{posts.author.first_name}}</a> <span class="lnr lnr-user"></span></p>
-											<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{posts.published_date}}</a> <span class="lnr lnr-calendar-full"></span></p>
-										<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{posts.counted_views}}</a> <span class="lnr lnr-eye"></span></p>
+										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{postt.author.first_name}}</a> <span class="lnr lnr-user"></span></p>
+											<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{postt.published_date}}</a> <span class="lnr lnr-calendar-full"></span></p>
+										<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{postt.counted_views}}</a> <span class="lnr lnr-eye"></span></p>
 										<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
 										<ul class="social-links col-lg-12 col-md-12 col-6">
 											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -49,9 +49,9 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-md-9">
-									<h3 class="mt-20 mb-20">{{posts.title}}</h3>
+									<h3 class="mt-20 mb-20">{{postt.title}}</h3>
 									<p class="excert">
-										{{posts.content}}
+										{{postt.content}}
 									</p>
 									
 								</div>
@@ -69,28 +69,28 @@
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 										<div class="thumb">
-											<a href="#"><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt=""></a>
+											<a href="/blog/post-{{prev.id}}"><img class="img-fluid" src="{{prev.image.url}}" alt=""></a>
 										</div>
 										<div class="arrow">
 											<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
 										</div>
 										<div class="detials">
 											<p>Prev Post</p>
-											<a href="#"><h4>Space The Final Frontier</h4></a>
+											<a href="/blog/post-{{prev.id}}"><h4>{{prev.title}}</h4></a>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 										<div class="detials">
 											<p>Next Post</p>
-											<a href="#"><h4>Telescopes 101</h4></a>
+											<a href="/blog/post-{{next.id}}"><h4>{{next.title}}</h4></a>
 										</div>
 										<div class="arrow">
 											<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
 										</div>
 										<div class="thumb">
-											<a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""></a>
+											<a href="/blog/post-{{next.id}}"><img class="img-fluid" src="{{next.image.url}}" alt=""></a>
 										</div>										
-									</div>									
+									</div>								
 								</div>
 							</div>
 							<div class="comments-area">
