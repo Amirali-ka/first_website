@@ -9,21 +9,14 @@ def single_view(request,pid):
     postt=get_object_or_404(post,pk=pid,published_date__lte=timezone.now(),status=1)
     postt.counted_views+=1
     postt.save()
-    t=get_list_or_404(post,published_date__lte=timezone.now(),status=1)
-    n_id,p_id=0,0
-    tt=[]
-    for i in t :
-        tt.append(i.id)
-    t=tt.index(pid)
-    if pid==max(tt):
-        n_id=pid
-    elif pid!=max(tt):
-        n_id=tt[t+1]
-    if pid==min(tt):
-        p_id=pid
-    elif pid!=min(tt):
-        p_id=tt[t-1]
-    prev=get_object_or_404(post,pk=p_id,published_date__lte=timezone.now(),status=1)
-    next=get_object_or_404(post,pk=n_id,published_date__lte=timezone.now(),status=1)
-    return render(request,'blog/blog-single.html',{'postt':postt,'next':next,'prev':prev})
+    try:
+        prev_post = post.objects.filter(published_date__lte=timezone.now(),status=1,pk__lt=pid).order_by('-pk').first()
+    except post.DoesNotExist:
+        prev_post = None
+
+    try:
+        next_post = post.objects.filter(published_date__lte=timezone.now(),status=1,pk__gt=pid).order_by('pk').first()
+    except post.DoesNotExist:
+        next_post = None
+    return render(request,'blog/blog-single.html',{'postt':postt,'next':next_post,'prev':prev_post})
 
