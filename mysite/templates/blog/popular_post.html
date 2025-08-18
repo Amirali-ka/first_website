@@ -1,0 +1,21 @@
+{% load static %}
+{% load blog_tags %}
+
+
+
+<div class="single-sidebar-widget popular-post-widget">
+	<h4 class="popular-title">popular-post</h4>
+	<div class="popular-post-list">
+        {% for i in posttt %}
+		<div class="single-post-list d-flex flex-row align-items-center">
+			<div class="thumb">
+				<img class="img-fluid" src="{{i.image.url}}" alt="">
+			</div>
+			<div class="details">
+				<a href="/blog/post-{{i.id}}"><h6>{{i.title}}</h6></a>
+				<p>{{i.content|truncatewords:10}}</p>
+			</div>
+		</div>	
+        {% endfor %}													
+	</div>
+</div>

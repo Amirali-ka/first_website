@@ -7,7 +7,5 @@ def about_view(request):
     return render(request,'website/about.html')
 def contact_view(request):
     return render(request,'website/contact.html')
-def test_view(request,pid):
-    posts=get_object_or_404(post,pk=pid)
-    contex={'posts':posts}
-    return render(request,'website/test.html',contex)
+def test_view(request):
+    return render(request,'website/test.html')
