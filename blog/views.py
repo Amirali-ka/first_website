@@ -19,4 +19,10 @@ def single_view(request,pid):
     except post.DoesNotExist:
         next_post = None
     return render(request,'blog/blog-single.html',{'postt':postt,'next':next_post,'prev':prev_post})
-
+def blog_category(request,cat_str):
+    posts=post.objects.filter(published_date__lte=timezone.now(),status=1,category__name=cat_str)
+    return render(request,'blog/blog-home.html',{'posts':posts})
+def blog_author(request,author_username):
+    if author_username :
+        posts=post.objects.filter(published_date__lte=timezone.now(),status=1,author__username=author_username)
+    return render(request,'blog/blog-home.html',{'posts':posts})
