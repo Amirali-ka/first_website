@@ -26,3 +26,9 @@ def blog_author(request,author_username):
     if author_username :
         posts=post.objects.filter(published_date__lte=timezone.now(),status=1,author__username=author_username)
     return render(request,'blog/blog-home.html',{'posts':posts})
+def blog_search(request):
+    posts=post.objects.filter(status=1)
+    if request.method=='GET':
+        posts=post.objects.filter(content__contains=request.GET.get('s'))
+    
+    return render(request,'blog/blog-home.html',{'posts':posts})
