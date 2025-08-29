@@ -1,5 +1,4 @@
-from django.shortcuts import render,get_object_or_404
-from blog.models import post
+from django.shortcuts import render
 # Create your views here.
 def index_view(request):
     return render(request,'website/index.html')

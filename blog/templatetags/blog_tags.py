@@ -1,4 +1,5 @@
 from django import template
+from django.utils import timezone
 from blog.models import post
 from blog.models import category
 register=template.Library()
@@ -25,3 +26,9 @@ def postcategory():
      for name in categories:
           cat_dict[name]=posts.filter(category=name).count()
      return {'categories':cat_dict}
+@register.inclusion_tag('website/lastest_post.html')
+def lastestposts(x=6):
+     posts=post.objects.filter(published_date__lte=timezone.now(),status=1)
+     x=(posts.count())-x
+     posts=posts[x::-1]
+     return {'posts':posts}
