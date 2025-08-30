@@ -16,9 +16,18 @@
 				{% for i in posts %}
 				<div class="single-recent-blog-post item">
 					<div class="thumb">
-						<img class="img-fluid" src="{{i.image.url}}" alt="">
+						<img class="img-fluid" src="{{i.image.url}}" alt="" >
 					</div>
 					<div class="details">
+						<div class="tags">
+							<ul>
+								{% for j in i.category.all %}
+								<li>
+									<a href="/blog/category-{{j.name}}">{{j.name}}</a>
+								</li>	
+								{% endfor %}										
+							</ul>
+						</div>
 						<a href="/blog/post-{{i.id}}"><h4 class="title">{{i.title}}</h4></a>
 						<p>
 							{{i.content|truncatewords:10}}
