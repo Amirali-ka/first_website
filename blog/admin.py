@@ -1,5 +1,6 @@
 from django.contrib import admin
 from blog.models import post,category
+from mywebsite.models import Contact,newsletter
 # Register your models here.
 class postadmin(admin.ModelAdmin):
     date_hierarchy='published_date'
@@ -9,3 +10,5 @@ class postadmin(admin.ModelAdmin):
     search_fields=['title','content']
 admin.site.register(post,postadmin)
 admin.site.register(category)
+admin.site.register(Contact)
+admin.site.register(newsletter)
