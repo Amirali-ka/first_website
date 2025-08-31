@@ -10,7 +10,9 @@ def contact_view(request):
     if request.method=='POST':
         form=contactform(request.POST)
         if form.is_valid():
-            form.save()
+            contact=form.save(commit=False)
+            contact.name='unknown'
+            contact.save()
             messages.add_message(request,messages.SUCCESS,'your submit is successful')
         else:
            messages.add_message(request,messages.ERROR,'your submit is not successful') 
