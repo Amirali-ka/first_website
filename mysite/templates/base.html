@@ -82,6 +82,18 @@
 				      </nav><!-- #nav-menu-container -->					      		  
 					</div>
 				</div>
+				{% if messages %}
+				<ul id='popup' class="messages">
+				   {% for message in messages %}
+				   	<li class="{{ message.tags }}">{{ message }}</li>
+				   {% endfor %}
+				</ul>
+				<script>
+  					setTimeout(() => {
+  					  document.getElementById('popup')?.remove();
+  					}, 3000);
+				</script>
+				{% endif %}	
 			</header><!-- #header -->
 {% block content %}
 {% endblock  %}
@@ -133,7 +145,7 @@
 										<div class="input-group d-flex flex-row">
 											<input name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
 											<button type="submit" class="btn bb-btn"><span class="lnr lnr-location"></span></button>		
-										</div>									
+										</div>						
 										<div class="mt-10 info"></div>
 									</form>
 								</div>
