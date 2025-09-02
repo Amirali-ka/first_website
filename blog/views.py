@@ -39,3 +39,6 @@ def blog_search(request):
         posts=post.objects.filter(content__contains=request.GET.get('s'))
     
     return render(request,'blog/blog-home.html',{'posts':posts})
+def blog_tags(request,tag_str):
+    posts=post.objects.filter(published_date__lte=timezone.now(),status=1,tags__name=tag_str)
+    return render(request,'blog/blog-home.html',{'posts':posts})
