@@ -25,3 +25,12 @@ class post (models.Model):
         return reverse("blog:single", kwargs={"pid": self.id})
 def __str__(self):
         return self.id
+class comment (models.Model) :
+    post=models.ForeignKey(post,on_delete=models.CASCADE)
+    name=models.CharField(max_length=255)
+    email=models.EmailField()
+    subject=models.CharField(max_length=255)
+    massage=models.TextField()
+    approach=models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
