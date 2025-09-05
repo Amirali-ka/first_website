@@ -1,12 +1,14 @@
 from django import template
 from django.utils import timezone
-from blog.models import post
-from blog.models import category
+from blog.models import post,category,comment
 register=template.Library()
 @register.simple_tag(name='func')
 def func ():
      posts=post.objects.filter(status=1)
      return posts
+@register.simple_tag(name='counted_view')
+def counted_view (pid):
+     return comment.objects.filter(post=pid,approach=True).count()
 @register.filter()
 def funcc (value):
      return value[:100]
