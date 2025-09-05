@@ -2,6 +2,8 @@ from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator,EmptyPage
 from django.utils import timezone
 from blog.models import post,comment
+from blog.forms import commentform
+from django.contrib import messages
 # Create your views here.
 def blog_view(request):
     posts=post.objects.filter(published_date__lte=timezone.now(),status=1)
@@ -26,7 +28,22 @@ def single_view(request,pid):
     except post.DoesNotExist:
         next_post = None
     comments=comment.objects.filter(post=pid,approach=True).order_by('created_date')
-    return render(request,'blog/blog-single.html',{'postt':postt,'next':next_post,'prev':prev_post,'comments':comments})
+    
+    if request.method=='POST':
+        form=commentform(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.post = postt
+            new_comment.save()
+            messages.add_message(request,messages.SUCCESS,'your submit is successful')
+        else:
+           messages.add_message(request,messages.ERROR,'your submit is not successful')
+    else:
+        form=commentform()
+    comments=comment.objects.filter(post=postt, approach=True).order_by('created_date')
+       
+    dic={'postt':postt,'next':next_post,'prev':prev_post,'comments':comments,'form':form}
+    return render(request,'blog/blog-single.html',dic)
 def blog_category(request,cat_str):
     posts=post.objects.filter(published_date__lte=timezone.now(),status=1,category__name=cat_str)
     return render(request,'blog/blog-home.html',{'posts':posts})
