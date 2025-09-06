@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'django_extensions',
     'mywebsite.apps.MywebsiteConfig',
-    'blog'
+    'blog',
+    'accounts'
 ]
 
 SITE_ID = 2
