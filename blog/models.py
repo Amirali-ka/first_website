@@ -32,6 +32,7 @@ class comment (models.Model) :
     subject=models.CharField(max_length=255)
     message=models.TextField()
     approach=models.BooleanField(default=False)
+    login_require=models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     def __str__(self):
