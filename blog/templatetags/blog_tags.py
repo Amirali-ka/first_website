@@ -14,7 +14,7 @@ def funcc (value):
      return value[:100]
 @register.inclusion_tag('populartemp.html')
 def pop_date():
-     posts=post.objects.filter(status=1).order_by('published_date')[:1]
+     posts = post.objects.filter(status=1).order_by('-published_date')[:1]
      return {'posts':posts}
 @register.inclusion_tag('blog/popular_post.html')
 def lastestpost(x=1):
@@ -30,7 +30,8 @@ def postcategory():
      return {'categories':cat_dict}
 @register.inclusion_tag('website/lastest_post.html')
 def lastestposts(x=6):
-     posts=post.objects.filter(published_date__lte=timezone.now(),status=1)
-     x=(posts.count())-x
-     posts=posts[x::-1]
+     posts = post.objects.filter(published_date__lte=timezone.now(), status=1).order_by('-published_date')
+     posts = list(posts)          
+     posts.reverse()              
+     posts = posts[:x] 
      return {'posts':posts}

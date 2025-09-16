@@ -30,5 +30,5 @@ def newsletter_view(request):
             return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')   
-def test_view(request):
-    return render(request,'website/test.html')
+def coming_view(request):
+    return render(request,'website/coming_soon.html')

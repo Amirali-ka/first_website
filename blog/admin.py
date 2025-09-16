@@ -1,15 +1,15 @@
 from django.contrib import admin
 from blog.models import post,category,comment
 from mywebsite.models import Contact,newsletter
-from django_summernote.admin import SummernoteModelAdmin
+#from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
-class postadmin(SummernoteModelAdmin):
+class postadmin(admin.ModelAdmin):
     date_hierarchy='published_date'
     empty_value_display='-empty-'
     list_display=('title','counted_views','author','status','published_date','created_date')
     list_filter=('status','author')
     search_fields=['title','content']
-    summernote_fields = ('content',)
+#    summernote_fields = ('content',)
 class commentadmin(admin.ModelAdmin):
     pass
 

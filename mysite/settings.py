@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from decouple import config
 
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'django_summernote',
+#   'django_summernote',
     'robots',
     'taggit',
     'captcha',
@@ -72,7 +73,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
-import os
+
 ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
@@ -153,7 +154,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-X_FRAME_OPTIONS = "SAMEORIGIN"
+
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailOrUsernameBackend',
     'django.contrib.auth.backends.ModelBackend', 
