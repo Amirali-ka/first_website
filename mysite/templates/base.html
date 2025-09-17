@@ -3,15 +3,15 @@
 	<html lang="zxx" class="no-js">
 	<head>
 		<!-- Mobile Specific Meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Favicon-->
 		<link rel="shortcut icon" href="{% static 'img/fav.png' %}">
 		<!-- Author Meta -->
-		<meta name="author" content="colorlib">
+		<meta name="author" content="Amir ali">
 		<!-- Meta Description -->
-		<meta name="description" content="">
+		<meta name="description" content="This is a travel blog about amazing destinations.">
 		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
+		<meta name="keywords" content="travel, blog, destinations, adventure, Rent, Booking">
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
@@ -67,27 +67,49 @@
 				        <ul class="nav-menu">
 				          <li><a href="{% url 'website:index' %}">Home</a></li>
 						  <li><a href="{% url 'blog:index' %}">Blog</a></li>
-				          <li><a href="{% url 'website:about'%}">About</a></li>
-				          
-				            
-				          </li>					          					          		          
+				          <li><a href="{% url 'website:about'%}">About</a></li>					          					          		          
 				          <li><a href="{% url 'website:contact' %}">Contact</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->					      		  
 					</div>
 				</div>
-				{% if messages %}
-				<ul id='popup' class="messages">
-				   {% for message in messages %}
-				   	<li class="{{ message.tags }}">{{ message }}</li>
-				   {% endfor %}
-				</ul>
-				<script>
-  					setTimeout(() => {
-  					  document.getElementById('popup')?.remove();
-  					}, 3000);
-				</script>
-				{% endif %}	
+			{% if messages %}
+			    <ul id="popup" class="messages">
+			        {% for message in messages %}
+			            <li class="msg {{ message.tags }}">{{ message }}</li>
+			        {% endfor %}
+			    </ul>
+			
+			    <style>
+			        .messages { 
+            			list-style: none; 
+            			padding: 0; 
+            			margin: 10px 0; 
+            			position: fixed;
+            			top: 20px;
+            			right: 20px;
+            			z-index: 9999;
+						        }
+			        .messages li {
+			            padding: 10px 20px;
+			            border-radius: 5px;
+			            margin-bottom: 5px;
+			            color: #fff;
+			            font-weight: bold;
+			            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+			        }
+			        .messages li.success { background-color: #4CAF50; }  
+			        .messages li.error { background-color: #f44336; }    
+			        .messages li.warning { background-color: #ff9800; }  
+			        .messages li.info { background-color: #2196F3; }     
+			    </style>
+			    <script>
+			        setTimeout(() => {
+			            document.getElementById('popup')?.remove();
+			        }, 3000);
+			    </script>
+			{% endif %}
+	
 			</header><!-- #header -->
 {% block content %}
 {% endblock  %}
@@ -110,18 +132,14 @@
 								<div class="row">
 									<div class="col">
 										<ul>
-											<li><a href="#">Home</a></li>
-											<li><a href="#">Feature</a></li>
-											<li><a href="#">Services</a></li>
-											<li><a href="#">Portfolio</a></li>
+											<li><a href="{% url 'website:index' %}">Home</a></li>
+											<li><a href="{% url 'website:about'%}">About</a></li>
 										</ul>
 									</div>
 									<div class="col">
 										<ul>
-											<li><a href="#">Team</a></li>
-											<li><a href="#">Pricing</a></li>
-											<li><a href="#">Blog</a></li>
-											<li><a href="#">Contact</a></li>
+											<li><a href="{% url 'blog:index' %}">Blog</a></li>
+											<li><a href="{% url 'website:contact' %}">Contact</a></li>
 										</ul>
 									</div>										
 								</div>							

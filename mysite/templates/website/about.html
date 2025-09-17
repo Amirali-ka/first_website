@@ -3,6 +3,8 @@
 {% block content %}		
 			  
 			<!-- start banner Area -->
+			{% block meta %}
+			{% endblock %}
 			<section class="about-banner relative">
 				<div class="overlay overlay-bg"></div>
 				<div class="container">				
@@ -11,7 +13,7 @@
 							<h1 class="text-white">
 								About Us				
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html"> About Us</a></p>
+							<p class="text-white link-nav"><a href="{% url 'website:index'%}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{% url 'website:about'%}"> About Us</a></p>
 						</div>	
 					</div>
 				</div>
