@@ -48,10 +48,17 @@ INSTALLED_APPS = [
     'taggit',
     'captcha',
     "debug_toolbar",
+    'compressor',
     'django_extensions',
     'mywebsite.apps.MywebsiteConfig',
     'blog',
     'accounts'
+]
+
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
 ]
 
 SITE_ID = 2
