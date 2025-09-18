@@ -18,11 +18,11 @@
 		<!-- Site Title -->
 		<title>Travel</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
-			{% compress css %}
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 			
 			<!--
 			CSS
 			============================================= -->
+			{% compress css %}
 			<link rel="stylesheet" href="{% static 'css/linearicons.css'%}">
 			<link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
 			<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
@@ -197,11 +197,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				</div>
 			</footer>
 			<!-- End footer Area -->	
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 			{% compress js %}
 			<script src="{% static 'js/vendor/jquery-2.2.4.min.js'%}"></script>
 			<script src="{% static 'js/popper.min.js'%}"></script>
-			<script src="{% static 'js/vendor/bootstrap.min.js'%}"></script>			
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
+			<script src="{% static 'js/vendor/bootstrap.min.js'%}"></script>					
  			<script src="{% static 'js/jquery-ui.js'%}"></script>					
   			<script src="{% static 'js/easing.min.js'%}"></script>			
 			<script src="{% static 'js/hoverIntent.js'%}"></script>
